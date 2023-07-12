@@ -1,12 +1,32 @@
 import { createRef } from "react";
 import axios from "axios";
 import Registration from "../pages/Registration";
+import Login from "../pages/Login";
+import About from "../pages/About";
 import Contact from "../pages/Contact";
 
 const routes = [
   {
     element: <h1>Home page</h1>,
     path: "/",
+    // loader: async () => {
+    //   let response = await axios.get(`/api/campgrounds/`);
+    //   return response.data;
+    // },
+    nodeRef: createRef(),
+  },
+  {
+    element: <About/>,
+    path: "/about",
+    // loader: async () => {
+    //   let response = await axios.get(`/api/campgrounds/`);
+    //   return response.data;
+    // },
+    nodeRef: createRef(),
+  },
+  {
+    element: <Login/>,
+    path: "/login",
     // loader: async () => {
     //   let response = await axios.get(`/api/campgrounds/`);
     //   return response.data;
