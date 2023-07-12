@@ -29,7 +29,7 @@ const validationSchema = yup.object({
     ),
 });
 const options = ["Program Manager", "Mentor", "Fellow"];
-export default function RegistraStion() {
+export default function Registration() {
   const formik = useFormik({
     initialValues: {
       email: "",
