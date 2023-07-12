@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken");
 // import User from "../models/User.js";
 
 const register = async (req, res) => {
-    res.send("Register");
+     res.send("registered ");
 }
 
 module.exports = { register };
