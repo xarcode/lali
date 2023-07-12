@@ -33,6 +33,4 @@ const FellowSchema = new Schema({
 
 
 
-// const Fellow = mongoose.model('Fellow', FellowSchema);
-
-module.exports = FellowSchema;
+module.exports = mongoose.model('Fellow', FellowSchema);
