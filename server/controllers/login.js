@@ -24,7 +24,8 @@ const login = async (req, res) => {
                     if(!validPassword) {
                         res.status(400).json("Wrong password");
                     }else{
-                        res.status(200).json(programManager);
+                        const token = jwt.sign({ id: programManager._id }, process.env.JWT_SECRET);
+                        res.status(200).json({ token, msg: "Logged in successfully"});
                     }
                 }
             }
@@ -33,7 +34,8 @@ const login = async (req, res) => {
                 if(!validPassword) {
                     res.status(400).json("Wrong password");
                 }else{
-                    res.status(200).json(mentor);
+                    const token = jwt.sign({ id: mentor._id }, process.env.JWT_SECRET);
+                    res.status(200).json({ token, msg: "Logged in successfully"});
                 }
             }
         }
@@ -42,7 +44,8 @@ const login = async (req, res) => {
             if(!validPassword) {
                 res.status(400).json("Wrong password");
             }else{
-                res.status(200).json(fellow);
+                const token = jwt.sign({ id: fellow._id }, process.env.JWT_SECRET);
+                res.status(200).json({ token, msg: "Logged in successfully"});
             }
         }
     }
