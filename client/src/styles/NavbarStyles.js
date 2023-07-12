@@ -1,6 +1,6 @@
 import { styled } from "@mui/material/styles";
 const Root = styled("div")(({ theme }) => ({
-  marginBottom: "64px",
+  marginBottom: "50px",
   "& .AppBar": {
     backgroundColor: "darkslategray",
     height: "50px",

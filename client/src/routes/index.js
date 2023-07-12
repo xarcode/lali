@@ -1,9 +1,9 @@
 import { createRef } from "react";
 import axios from "axios";
-import { redirect } from "react-router-dom";
 import Registration from "../pages/Registration";
 import Login from "../pages/Login";
 import About from "../pages/About";
+import Contact from "../pages/Contact";
 
 const routes = [
   {
@@ -36,6 +36,15 @@ const routes = [
   {
     element: <Registration />,
     path: "/register",
+    // loader: async () => {
+    //   let response = await axios.get(`/api/campgrounds/`);
+    //   return response.data;
+    // },
+    nodeRef: createRef(),
+  },
+  {
+    element: <Contact />,
+    path: "/contact",
     // loader: async () => {
     //   let response = await axios.get(`/api/campgrounds/`);
     //   return response.data;
