@@ -11,7 +11,7 @@ function App() {
     routes.find((route) => route.path === location.pathname) ?? {};
   return (
     <div className="App">
-      <div ref={nodeRef} className="App-container" style={{ height: "100vh" }}>
+      <div ref={nodeRef} style={{ height: "100vh" }}>
         {currentOutlet}
       </div>
     </div>
