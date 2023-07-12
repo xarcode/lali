@@ -24,7 +24,7 @@ const MentorSchema = new Schema({
         default: [],
     },
     feedback_aggregate:{
-        type: float,
+        type: Number,
     },
     assignments : {
         type: Array,
