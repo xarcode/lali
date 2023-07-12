@@ -1,7 +1,42 @@
+ @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;400&display=swap');
+
+
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,300&display=swap");
 * {
   margin: 0;
   padding: 0;
+  font-family: 'Raleway',sans-serif;
+}
+
+.container{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.flexbox{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.content-box{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.hero-txt{
+  flex: 1;
+  padding: 1rem;
+  font-size: 1.3rem;
+  text-align: left;
+
+}
+.hero-img{
+  display: flex;
+  justify-content: center;
+  flex: 1.5;
+  padding: 1rem;
 }
 body {
   font-family: Roboto;
