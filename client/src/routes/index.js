@@ -1,11 +1,21 @@
 import { createRef } from "react";
 import axios from "axios";
 import { redirect } from "react-router-dom";
+import Registration from "../pages/Registration";
 
 const routes = [
   {
-    element: <h1>Hello</h1>,
+    element: <h1>Home page</h1>,
     path: "/",
+    // loader: async () => {
+    //   let response = await axios.get(`/api/campgrounds/`);
+    //   return response.data;
+    // },
+    nodeRef: createRef(),
+  },
+  {
+    element: <Registration />,
+    path: "/register",
     // loader: async () => {
     //   let response = await axios.get(`/api/campgrounds/`);
     //   return response.data;
