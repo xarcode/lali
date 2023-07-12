@@ -3,10 +3,18 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
+import RadioGroup from "@mui/material/RadioGroup";
+import Radio from "@mui/material/Radio";
+import FormControlLabel from "@mui/material/FormControlLabel";
 
 import Navbar from "../components/Navbar";
+import Root from "../styles/RegistrationStyles";
 
 const validationSchema = yup.object({
+  name: yup
+    .string("Enter your full name")
+    .required("Name is required")
+    .min(2, "Name should be of minimum 2 characters length"),
   email: yup
     .string("Enter your email")
     .email("Enter a valid email")
@@ -14,24 +22,58 @@ const validationSchema = yup.object({
   password: yup
     .string("Enter your password")
     .min(8, "Password should be of minimum 8 characters length")
-    .required("Password is required"),
+    .required("Password is required")
+    .matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+      "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
+    ),
 });
-export default function Registration() {
+const options = ["Program Manager", "Mentor", "Fellow"];
+export default function RegistraStion() {
   const formik = useFormik({
     initialValues: {
-      email: "foobar@example.com",
-      password: "foobar",
+      email: "",
+      password: "",
+      name: "",
     },
     validationSchema: validationSchema,
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: (values, { resetForm }) => {
+      resetForm();
+      console.log(JSON.stringify(values, null, 2));
     },
   });
+
   return (
-    <div>
+    <Root>
       <Navbar />
       <div className="Registration-form">
         <form onSubmit={formik.handleSubmit}>
+          <RadioGroup
+            onChange={formik.handleChange}
+            name="type"
+            defaultValue={"Fellow"}
+          >
+            {options.map((option, index) => (
+              <FormControlLabel
+                key={index}
+                value={option}
+                control={<Radio />}
+                label={option}
+              />
+            ))}
+          </RadioGroup>
+
+          <TextField
+            fullWidth
+            id="name"
+            name="name"
+            label="Name"
+            value={formik.values.name}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            error={formik.touched.name && Boolean(formik.errors.name)}
+            helperText={formik.touched.name && formik.errors.name}
+          />
           <TextField
             fullWidth
             id="email"
@@ -60,6 +102,6 @@ export default function Registration() {
           </Button>
         </form>
       </div>
-    </div>
+    </Root>
   );
 }
