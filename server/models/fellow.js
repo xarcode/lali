@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+
 const Schema = mongoose.Schema;
 
 
@@ -30,4 +31,8 @@ const FellowSchema = new Schema({
     },
 });
 
-module.exports = mongoose.model('Fellow', FellowSchema);
+
+
+// const Fellow = mongoose.model('Fellow', FellowSchema);
+
+module.exports = FellowSchema;
