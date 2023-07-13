@@ -7,7 +7,7 @@ const morgan = require("morgan");
 const helmet = require("helmet");
 const path = require("path");
 const authRoutes = require("./routes/auth.js");
-
+const userRoutes = require("./routes/users.js");
 
 const app = express();
 
@@ -54,6 +54,7 @@ app.get("/", (req, res) => {
 
 // Routes
 app.use("/auth", authRoutes);
+app.use("/users", userRoutes);
 
 app.listen(5000, () => {
     console.log("Server is running on port 5000.");
