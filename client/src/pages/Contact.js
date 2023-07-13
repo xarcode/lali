@@ -1,6 +1,7 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
+import { Link } from "react-router-dom";
 import PhoneRoundedIcon from "@mui/icons-material/PhoneRounded";
 import Navbar from "../components/Navbar";
 import Root from "../styles/ContactStyles";
@@ -54,7 +55,9 @@ export default function Contact() {
               </div>
               <div>
                 <span>PHONE</span>
-                <span>+91 88888 88888</span>
+                <span>
+                  <Link to="#">+91 88888 88888</Link>
+                </span>
               </div>
             </div>
             <div className="Contact-subdetails">
@@ -63,7 +66,9 @@ export default function Contact() {
               </div>
               <div>
                 <span>MAIL</span>
-                <span>lai@gmail.com</span>
+                <span>
+                  <Link to="#">lali@gmail.com</Link>
+                </span>
               </div>
             </div>
             <div className="Contact-subdetails">
@@ -72,7 +77,9 @@ export default function Contact() {
               </div>
               <div>
                 <span>INSTAGRAM</span>
-                <span> lali</span>
+                <span>
+                  <Link to="#">lali</Link>
+                </span>
               </div>
             </div>
             <div className="Contact-subdetails">
@@ -81,7 +88,9 @@ export default function Contact() {
               </div>
               <div>
                 <span>TWITTER</span>
-                <span>lali</span>
+                <span>
+                  <Link to="#">lali</Link>
+                </span>
               </div>
             </div>
           </div>
