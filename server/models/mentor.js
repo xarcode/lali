@@ -18,6 +18,7 @@ const MentorSchema = new Schema({
     },
     attendance: {
         type: Number,
+        default: 0,
     },
     mentees: {
         type: Array,

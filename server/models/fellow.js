@@ -20,6 +20,7 @@ const FellowSchema = new Schema({
     },
     attendence: {
         type: Number,
+        default: 0,
     },
     assignments: {
         type: Array,
