@@ -6,6 +6,10 @@ import TextField from "@mui/material/TextField";
 import RadioGroup from "@mui/material/RadioGroup";
 import Radio from "@mui/material/Radio";
 import FormControlLabel from "@mui/material/FormControlLabel";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.min.css";
 
 import Navbar from "../components/Navbar";
 import Root from "../styles/RegistrationStyles";
@@ -28,18 +32,41 @@ const validationSchema = yup.object({
       "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
     ),
 });
-const options = ["Program Manager", "Mentor", "Fellow"];
 export default function Registration() {
+  const navigate = useNavigate();
+  const handleError = (err) =>
+    toast.error(err, {
+      position: "bottom-left",
+    });
+  const handleSuccess = (msg) =>
+    toast.success(msg, {
+      position: "bottom-right",
+    });
   const formik = useFormik({
     initialValues: {
       email: "",
       password: "",
       name: "",
+      type: "",
     },
     validationSchema: validationSchema,
-    onSubmit: (values, { resetForm }) => {
+    onSubmit: async (values, { resetForm }) => {
       resetForm();
       console.log(JSON.stringify(values, null, 2));
+      try {
+        const user = await axios.post(
+          "http://localhost:5000/auth/register",
+          values
+        );
+        handleSuccess("Successfully registered!");
+        // console.log(user);
+        setTimeout(() => {
+          navigate("/login");
+        }, 5000);
+      } catch (error) {
+        handleError("Error in registration");
+        console.log(error);
+      }
     },
   });
 
@@ -52,15 +79,23 @@ export default function Registration() {
             onChange={formik.handleChange}
             name="type"
             defaultValue={"Fellow"}
+            value={formik.values.inCompliance}
           >
-            {options.map((option, index) => (
-              <FormControlLabel
-                key={index}
-                value={option}
-                control={<Radio />}
-                label={option}
-              />
-            ))}
+            <FormControlLabel
+              value="programManager"
+              control={<Radio />}
+              label="Program Manager"
+            />
+            <FormControlLabel
+              value="mentor"
+              control={<Radio />}
+              label="Mentor"
+            />
+            <FormControlLabel
+              value="fellow"
+              control={<Radio />}
+              label="Fellow"
+            />
           </RadioGroup>
 
           <TextField
@@ -102,6 +137,7 @@ export default function Registration() {
           </Button>
         </form>
       </div>
+      <ToastContainer />
     </Root>
   );
 }
