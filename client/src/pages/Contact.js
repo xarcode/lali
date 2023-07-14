@@ -48,7 +48,7 @@ export default function Contact() {
         <div className="Contact-heading">Let's Connect</div>
         <div className="Contact-body">
           <div className="Contact-details">
-            <div className="Contact-subdetails">
+            {/* <div className="Contact-subdetails">
               <div>
                 <PhoneRoundedIcon />
               </div>
@@ -82,6 +82,20 @@ export default function Contact() {
               <div>
                 <span>TWITTER</span>
                 <span>lali</span>
+              </div>
+            </div> */}
+            <div className="Contact-subdetails">
+              <div>Contacts</div>
+              <div>
+                <div>lali@gmail.com</div>
+                <div>Delhi, India</div>
+              </div>
+            </div>
+            <div className="Contact-subdetails">
+              <div>Social</div>
+              <div className="Contact-icons">
+                <InstagramIcon />
+                <TwitterIcon />
               </div>
             </div>
           </div>

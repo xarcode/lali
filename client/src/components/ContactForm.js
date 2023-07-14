@@ -35,52 +35,58 @@ export default function ContactForm() {
   });
   return (
     <Root>
-      <form onSubmit={formik.handleSubmit}>
+      <form autoComplete="new-password" onSubmit={formik.handleSubmit}>
         <TextField
           fullWidth
-          InputLabelProps={{
-            style: { color: "#fff" },
-          }}
           id="name"
+          autoComplete="new-password"
           name="name"
           label="Full Name"
           value={formik.values.name}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           error={formik.touched.name && Boolean(formik.errors.name)}
-          helperText={formik.touched.name && formik.errors.name}
+          helperText={
+            formik.touched.name && formik.errors.name
+              ? formik.touched.name && formik.errors.name
+              : " "
+          }
         />
         <TextField
           fullWidth
           id="email"
-          InputLabelProps={{
-            style: { color: "#fff" },
-          }}
           name="email"
           label="Email"
+          autoComplete="new-off"
           value={formik.values.email}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           error={formik.touched.email && Boolean(formik.errors.email)}
-          helperText={formik.touched.email && formik.errors.email}
+          helperText={
+            formik.touched.email && formik.errors.email
+              ? formik.touched.email && formik.errors.email
+              : " "
+          }
         />
         <TextField
           multiline
           rows={3}
-          InputLabelProps={{
-            style: { color: "#fff" },
-          }}
           fullWidth
           id="message"
           name="message"
           label="Message"
+          autoComplete="new-off"
           value={formik.values.message}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           error={formik.touched.message && Boolean(formik.errors.message)}
-          helperText={formik.touched.message && formik.errors.message}
+          helperText={
+            formik.touched.message && formik.errors.message
+              ? formik.touched.message && formik.errors.message
+              : " "
+          }
         />
-        <Button color="primary" variant="contained" fullWidth type="submit">
+        <Button className="ContactForm-btn" variant="contained" type="submit">
           Submit
         </Button>
       </form>
